@@ -1,3 +1,68 @@
+function isFunction(f) {
+  var getType = {};
+  return f && getType.toString.call(f) === '[object Function]';
+}
+
+function serialize(element, content, htmlSerializer) {
+  // Return the user customized output (if available)
+  if (htmlSerializer) {
+    var custom = htmlSerializer(element, content);
+    if (custom) {
+      return custom;
+    }
+  }
+
+  // Fall back to the default HTML output
+  var TAG_NAMES = {
+    "heading1": "h1",
+    "heading2": "h2",
+    "heading3": "h3",
+    "heading4": "h4",
+    "heading5": "h5",
+    "heading6": "h6",
+    "paragraph": "p",
+    "preformatted": "pre",
+    "list-item": "li",
+    "o-list-item": "li",
+    "group-list-item": "ul",
+    "group-o-list-item": "ol",
+    "strong": "strong",
+    "em": "em"
+  };
+
+  if (TAG_NAMES[element.type]) {
+    var name = TAG_NAMES[element.type];
+    var classCode = element.label ? (' class="' + element.label + '"') : '';
+    return '<' + name + classCode + '>' + content + '</' + name + '>';
+  }
+
+  if (element.type == "image") {
+    var label = element.label ? (" " + element.label) : "";
+    var imgTag = '<img src="' + element.url + '" alt="' + (element.alt || "") + '" copyright="' + (element.copyright || "") + '">';
+    return '<p class="block-img' + label + '">' +
+      (element.linkUrl ? ('<a href="' + element.linkUrl + '">' + imgTag + '</a>') : imgTag) +
+      '</p>';
+  }
+
+  if (element.type == "embed") {
+    return '<div data-oembed="'+ element.embed_url +
+      '" data-oembed-type="'+ element.type +
+      '" data-oembed-provider="'+ element.provider_name +
+      (element.label ? ('" class="' + element.label) : '') +
+      '">' + element.oembed.html+"</div>";
+  }
+
+  if (element.type === 'hyperlink') {
+    return '<a href="' + element.url + '">' + content + '</a>';
+  }
+
+  if (element.type === 'label') {
+    return '<span class="' + element.data.label + '">' + content + '</span>';
+  }
+
+  return "<!-- Warning: " + element.type + " not implemented. Upgrade the Developer Kit. -->" + content;
+}
+
 function htmlEscape(input) {
   return input && input.replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
@@ -112,10 +177,10 @@ module.exports = {
         return ctx.linkResolver(ctx, doc, isBroken);
       };
     }
-    if (Array.isArray(structuredText.blocks)) {
+    if (Array.isArray(structuredText)) {
 
-      for(var i=0; i < structuredText.blocks.length; i++) {
-        block = structuredText.blocks[i];
+      for(var i=0; i < structuredText.length; i++) {
+        block = structuredText[i];
 
         // Resolve image links
         if (block.type == "image" && block.linkTo) {
@@ -169,8 +234,8 @@ module.exports = {
    */
   asText: function(structuredText) {
     var output = [];
-    for(var i=0; i<structuredText.blocks.length; i++) {
-      var block = structuredText.blocks[i];
+    for(var i=0; i<structuredText.length; i++) {
+      var block = structuredText[i];
       if (block.text) {
         output.push(block.text);
       }
