@@ -1,0 +1,22 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "../d.ts",
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "preserveConstEnums": true,
+    "removeComments": false,
+    "sourceMap": true,
+    "lib": ["es5", "dom"],
+    "strictNullChecks": true,
+    "baseUrl": ".",
+    "paths": {
+      "@root/*": ["./src/*"],
+      "@utils/*": ["./src/utils/*"]
+    }
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

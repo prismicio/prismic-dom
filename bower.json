@@ -1,0 +1,14 @@
+{
+  "name": "prismic-dom",
+  "description": "render prismic json fragments in HTML",
+  "main": "dist/prismic-dom.min.js",
+  "license": "ISC",
+  "homepage": "https://github.com/arnaudlewis/prismic-dom",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
