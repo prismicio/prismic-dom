@@ -3,7 +3,7 @@ import {
   ListItem,
   List,
   Element
-} from '@utils/elements';
+} from '@root/elements';
 
 import { insertSpans } from '@utils/spans';
 

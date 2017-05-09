@@ -1,6 +1,6 @@
 import {
   Element
-} from '@utils/elements';
+} from '@root/elements';
 
 import { getURL } from '@utils/link';
 
