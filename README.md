@@ -35,6 +35,7 @@ The kit is universal, it can be used:
 
 ### Demo project
 
+You can find an integration of prismic content with the new API V2 in the following project:
 * [Node.js project](https://github.com/arnaudlewis/prismic-apiv2)
 
 ### Usage
