@@ -5,7 +5,7 @@
 
 * The [source code](https://github.com/arnaudlewis/prismic-dom) is on Github.
 * The [Changelog](https://github.com/arnaudlewis/prismic-dom/releases) is on Github's releases tab.
-* The [API reference](https://arnaudlewis.github.io/prismic-dom/) is on Github.
+* The [API reference](https://arnaudlewis.github.io/prismic-dom/globals.html) is on Github.
 
 ### Installation
 
