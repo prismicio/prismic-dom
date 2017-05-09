@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/arnaudlewis/prismic-dom.git"
+    "url": "git+https://github.com/prismicio/prismic-dom.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/arnaudlewis/prismic-dom/issues"
+    "url": "https://github.com/prismicio/prismic-dom/issues"
   },
-  "homepage": "https://github.com/arnaudlewis/prismic-dom#readme",
+  "homepage": "https://github.com/prismicio/prismic-dom#readme",
   "devDependencies": {
     "ts-loader": "^2.0.3",
     "tslint": "^5.1.0",

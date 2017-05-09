@@ -3,7 +3,7 @@
   "description": "render prismic json fragments in HTML",
   "main": "dist/prismic-dom.min.js",
   "license": "ISC",
-  "homepage": "https://github.com/arnaudlewis/prismic-dom",
+  "homepage": "https://github.com/prismicio/prismic-dom",
   "ignore": [
     "**/.*",
     "node_modules",

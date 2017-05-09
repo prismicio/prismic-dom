@@ -64,6 +64,68 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
+				<h2 id="javascript-library-with-static-helpers-to-render-html-with-prismic-api-v2">JavaScript library with static helpers to render HTML with Prismic API V2</h2>
+				<p><a href="http://badge.fury.io/js/prismic-dom"><img src="https://badge.fury.io/js/prismic-dom.svg" alt="npm version"></a>
+				<a href="https://travis-ci.org/prismicio/prismic-dom"><img src="https://api.travis-ci.org/prismicio/prismic-dom.png" alt="Build Status"></a></p>
+				<ul>
+					<li>The <a href="https://github.com/prismicio/prismic-dom">source code</a> is on Github.</li>
+					<li>The <a href="https://github.com/prismicio/prismic-dom/releases">Changelog</a> is on Github&#39;s releases tab.</li>
+					<li>The <a href="https://prismicio.github.io/prismic-dom/globals.html">API reference</a> is on Github.</li>
+				</ul>
+				<h3 id="installation">Installation</h3>
+				<h4 id="npm">NPM</h4>
+				<pre><code class="lang-sh">npm install prismic-dom --save
+</code></pre>
+				<h4 id="cdn">CDN</h4>
+				<pre><code><span class="hljs-symbol">https:</span><span class="hljs-comment">//unpkg.com/prismic-dom</span>
+</code></pre><p>(You may need to adapt the version number)</p>
+				<h4 id="downloadable-version">Downloadable version</h4>
+				<p>On our release page: <a href="https://github.com/prismicio/prismic-dom/releases">https://github.com/prismicio/prismic-dom/releases</a>.</p>
+				<p>The kit is universal, it can be used:</p>
+				<ul>
+					<li>Server-side with NodeJS</li>
+					<li>Client-side as part of your build with Browserify, Webpack</li>
+					<li>Client-side with a simple script tag</li>
+				</ul>
+				<h3 id="demo-project">Demo project</h3>
+				<p>You can find an integration of prismic content with the new API V2 in the following project:</p>
+				<ul>
+					<li><a href="https://github.com/arnaudlewis/prismic-apiv2">Node.js project</a></li>
+				</ul>
+				<h3 id="usage">Usage</h3>
+				<p>With NodeJS, you can expose PrismicDOM directly in your locals to have it in your templates:</p>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> PrismicDOM <span class="hljs-keyword">from</span> <span class="hljs-string">'prismic-dom'</span>;
+
+res.locals.DOM = PrismicDOM;
+</code></pre>
+				<p>Render a RichText:</p>
+				<ul>
+					<li><p>As Html</p>
+						<pre><code class="lang-javascript">DOM.RichText.asHtml(mydoc.data.myrichtext, linkResolver)
+</code></pre>
+					</li>
+					<li><p>As Text</p>
+						<pre><code class="lang-javascript">DOM.RichText.asText(mydoc.data.myrichtext)
+</code></pre>
+					</li>
+				</ul>
+				<p>Convert a Date as string from the API to an ISO Date:</p>
+				<pre><code class="lang-javascript">DOM.Date(mydoc.data.mydate)
+</code></pre>
+				<h4 id="install-the-kit-locally">Install the kit locally</h4>
+				<p>Source files are in the <code>src/</code> directory. You only need <a href="http://www.joyent.com/blog/installing-node-and-npm/">Node.js and npm</a>
+				to work on the codebase.</p>
+				<pre><code><span class="hljs-built_in">npm</span> install
+<span class="hljs-built_in">npm</span> run dev
+</code></pre><h4 id="documentation">Documentation</h4>
+				<p>Please document any new feature or bugfix using the <a href="http://usejsdoc.org/">JSDoc</a> syntax. You don&#39;t need to generate the documentation, we&#39;ll do that.</p>
+				<p>If you feel an existing area of code is lacking documentation, feel free to write it; but please do so on its own branch and pull-request.</p>
+				<p>If you find existing code that is not optimally documented and wish to make it better, we really appreciate it; but you should document it on its own branch and its own pull request.</p>
+				<h3 id="license">License</h3>
+				<p>This software is licensed under the Apache 2 license, quoted below.</p>
+				<p>Copyright 2013-2016 Prismic.io (<a href="http://prismic.io">http://prismic.io</a>).</p>
+				<p>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this project except in compliance with the License. You may obtain a copy of the License at <a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a>.</p>
+				<p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">

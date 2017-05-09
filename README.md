@@ -1,11 +1,11 @@
 ## JavaScript library with static helpers to render HTML with Prismic API V2
 
 [![npm version](https://badge.fury.io/js/prismic-dom.svg)](http://badge.fury.io/js/prismic-dom)
-[![Build Status](https://api.travis-ci.org/arnaudlewis/prismic-dom.png)](https://travis-ci.org/arnaudlewis/prismic-dom)
+[![Build Status](https://api.travis-ci.org/prismicio/prismic-dom.png)](https://travis-ci.org/prismicio/prismic-dom)
 
-* The [source code](https://github.com/arnaudlewis/prismic-dom) is on Github.
-* The [Changelog](https://github.com/arnaudlewis/prismic-dom/releases) is on Github's releases tab.
-* The [API reference](https://arnaudlewis.github.io/prismic-dom/globals.html) is on Github.
+* The [source code](https://github.com/prismicio/prismic-dom) is on Github.
+* The [Changelog](https://github.com/prismicio/prismic-dom/releases) is on Github's releases tab.
+* The [API reference](https://prismicio.github.io/prismic-dom/globals.html) is on Github.
 
 ### Installation
 
@@ -25,7 +25,7 @@ https://unpkg.com/prismic-dom
 
 #### Downloadable version
 
-On our release page: [https://github.com/arnaudlewis/prismic-dom/releases](https://github.com/arnaudlewis/prismic-dom/releases).
+On our release page: [https://github.com/prismicio/prismic-dom/releases](https://github.com/prismicio/prismic-dom/releases).
 
 The kit is universal, it can be used:
 
@@ -87,7 +87,7 @@ If you find existing code that is not optimally documented and wish to make it b
 
 This software is licensed under the Apache 2 license, quoted below.
 
-Copyright 2013-2016 Zengularity (http://www.zengularity.com).
+Copyright 2013-2016 Prismic.io (http://prismic.io).
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this project except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
 
