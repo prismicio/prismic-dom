@@ -53,7 +53,7 @@ export class Heading implements IElement {
 
   serialize(htmlSerializer: (element: HTMLElement, content: string) => string): string {
     if(htmlSerializer) return htmlSerializer(this.value, this.content);
-    const classList = this.value.label || '';
+    const classList = [this.value.label || ''];
     return `<h${this.level} class="${classList.join(' ')}">${this.content}</h${this.level}>`;
   }
 }
@@ -72,7 +72,7 @@ export class ListItem implements IElement {
 
   serialize(htmlSerializer: (element: HTMLElement, content: string) => string): string {
     if(htmlSerializer) return htmlSerializer(this.value, this.content);
-    const classList = this.value.label || '';
+    const classList = [this.value.label || ''];
     return `<li class="${classList.join(' ')}">${this.content}</li>`;
   }
 }
@@ -109,7 +109,7 @@ export class Paragraph implements IElement {
 
   serialize(htmlSerializer: (element: HTMLElement, content: string) => string): string {
     if(htmlSerializer) return htmlSerializer(this.value, this.content);
-    const classList = this.value.label || '';
+    const classList = [this.value.label || ''];
     return `<p class="${classList.join(' ')}">${this.content}</p>`;
   }
 }
@@ -127,7 +127,7 @@ export class Preformatted implements IElement {
 
   serialize(htmlSerializer: (element: HTMLElement, content: string) => string): string {
     if(htmlSerializer) return htmlSerializer(this.value, this.content);
-    const classList = this.value.label || '';
+    const classList = [this.value.label || ''];
     return `<pre class="${classList.join(' ')}">${this.content}</pre>`;
   }
 }
@@ -145,7 +145,7 @@ export class Strong implements IElement {
 
   serialize(htmlSerializer: (element: HTMLElement, content: string) => string): string {
     if(htmlSerializer) return htmlSerializer(this.value, this.content);
-    const classList = this.value.label || '';
+    const classList = [this.value.label || ''];
     return `<strong class="${classList.join(' ')}">${this.content}</strong>`;
   }
 }
@@ -163,7 +163,7 @@ export class Emphasized implements IElement {
 
   serialize(htmlSerializer: (element: HTMLElement, content: string) => string): string {
     if(htmlSerializer) return htmlSerializer(this.value, this.content);
-    const classList = this.value.label || '';
+    const classList = [this.value.label || ''];
     return `<em class="${classList.join(' ')}">${this.content}</em>`;
   }
 }
@@ -257,7 +257,7 @@ export class Label implements IElement {
 
 export const Element = {
   apply(element: any, content: string, linkResolver: (doc: any, isBroken: boolean) => string): IElement {
-    switch(element.typ) {
+    switch(element.type) {
       case 'heading1': return new Heading(element, 1, content);
       case 'heading2': return new Heading(element, 2, content);
       case 'heading3': return new Heading(element, 3, content);
@@ -275,7 +275,7 @@ export const Element = {
       case 'embed': return new Embed(element, content);
       case 'hyperlink': return new Link(element, linkResolver, content);
       case 'label': return new Label(element, content);
-      default: throw new Error("Invalid element type");
+      default: throw new Error(`Invalid element type on element : ${JSON.stringify(element)}`);
     }
   }
 }
