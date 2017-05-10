@@ -7,6 +7,9 @@
 * The [Changelog](https://github.com/prismicio/prismic-dom/releases) is on Github's releases tab.
 * The [API reference](https://prismicio.github.io/prismic-dom/globals.html) is on Github.
 
+It's meant to work in pair with the prismic-javascript library, a new javascript kit for the prismic API v2 available here:
+* [prismic-javascript](https://github.com/prismicio/prismic-javascript) is on Github.
+
 ### Installation
 
 #### NPM
@@ -87,7 +90,7 @@ If you find existing code that is not optimally documented and wish to make it b
 
 This software is licensed under the Apache 2 license, quoted below.
 
-Copyright 2013-2016 Prismic.io (http://prismic.io).
+Copyright 2013-2017 Prismic.io (http://prismic.io).
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this project except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
 
