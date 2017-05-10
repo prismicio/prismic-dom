@@ -39,14 +39,25 @@ export class Heading implements IElement {
     this.level = level;
     this.content = content;
     
-
     switch(level) {
-      case 1: this.kind = ElementKind.heading1;
-      case 2: this.kind = ElementKind.heading2;
-      case 3: this.kind = ElementKind.heading3;
-      case 4: this.kind = ElementKind.heading4;
-      case 5: this.kind = ElementKind.heading5;
-      case 6: this.kind = ElementKind.heading6;
+      case 1:
+        this.kind = ElementKind.heading1;
+        break;
+      case 2:
+        this.kind = ElementKind.heading2;
+        break;
+      case 3:
+        this.kind = ElementKind.heading3;
+        break;
+      case 4:
+        this.kind = ElementKind.heading4;
+        break;
+      case 5:
+        this.kind = ElementKind.heading5;
+        break;
+      case 6:
+        this.kind = ElementKind.heading6;
+        break;
       default: throw Error(`Invalid heading level ${level}`);
     };
   }
