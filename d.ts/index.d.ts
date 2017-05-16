@@ -1,3 +1,5 @@
+export { default as Date } from '@root/date';
+export { default as RichText } from '@root/richtext';
 declare var _default: {
     Date: (date?: string | undefined) => Date | null;
     RichText: {
