@@ -1,4 +1,4 @@
-import Date from '@root/date';
-import RichText from '@root/richtext';
+import Date from "@root/date";
+import RichText from "@root/richtext";
 
-export default { Date, RichText };
+module.exports = { Date, RichText };
