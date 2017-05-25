@@ -2,7 +2,7 @@
   "name": "prismic-dom",
   "version": "1.2.0",
   "description": "render prismic json fragments in HTML",
-  "main": "dist/prismic-dom.js",
+  "main": "dist/prismic-dom.min.js",
   "scripts": {
     "build": "webpack --debug; webpack -p",
     "dev": "webpack -d --watch",
