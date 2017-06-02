@@ -1,4 +1,4 @@
-## JavaScript library with static helpers to render HTML with Prismic API V2
+## JavaScript library with static helpers to render HTML with Prismic API V2 BETA
 
 [![npm version](https://badge.fury.io/js/prismic-dom.svg)](http://badge.fury.io/js/prismic-dom)
 [![Build Status](https://api.travis-ci.org/prismicio/prismic-dom.png)](https://travis-ci.org/prismicio/prismic-dom)
@@ -11,6 +11,13 @@ It's meant to work in pair with the prismic-javascript library, a new javascript
 * [prismic-javascript](https://github.com/prismicio/prismic-javascript) is on Github.
 
 ### Installation
+
+#### Prismic Api Endpoint
+Your endpoint must contains "v2" at the end, otherwise it means that you're working on the API V1 so this library won't work for you.
+
+```javascript
+apiEndpoint: your-repo-name.prismic.io/api/v2
+```
 
 #### NPM
 
