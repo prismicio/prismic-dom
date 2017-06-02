@@ -2,7 +2,7 @@ import {
   Element
 } from '@root/elements';
 
-import { getURL } from '@utils/link';
+import Link from '@root/link';
 
 function htmlEscape(input: string) {
   return input && input.replace(/&/g, "&amp;")
@@ -62,7 +62,7 @@ export function insertSpans(text: string, spans: any, linkResolver: (doc: any, i
         // Open a tag
         var url = null;
         if (span.type == "hyperlink") {
-          span.url = getURL(span.data, linkResolver);
+          span.url = Link.url(span.data, linkResolver);
         }
         var elt = {
           span: span,

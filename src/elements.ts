@@ -1,4 +1,4 @@
-import { getURL } from '@utils/link';
+import LinkHelper from '@root/link';
 
 export enum ElementKind {
   heading1,
@@ -240,7 +240,7 @@ export class Link implements IElement {
     this.kind = ElementKind.hyperlink;
     this.value = value;
     this.content = content;
-    this.url = getURL(value, linkResolver);
+    this.url = LinkHelper.url(value, linkResolver);
   }
 
   serialize(htmlSerializer: (element: HTMLElement, content: string) => string): string {
