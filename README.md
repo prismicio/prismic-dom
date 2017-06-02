@@ -62,6 +62,13 @@ Render a RichText:
   DOM.RichText.asText(mydoc.data.myrichtext)
 ```
 
+Get a URL from a Link fragment of any kind
+
+```javascript
+//link resolver not required if sure that it's not a document link
+DOM.Link.url(mydoc.data.mylink, ctx.linkResolver)
+```
+
 Convert a Date as string from the API to an ISO Date:
 
 ```javascript
