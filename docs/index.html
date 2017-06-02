@@ -113,6 +113,10 @@ res.locals.DOM = PrismicDOM;
 </code></pre>
 					</li>
 				</ul>
+				<p>Get a URL from a Link fragment of any kind</p>
+				<pre><code class="lang-javascript"><span class="hljs-comment">//link resolver not required if sure that it's not a document link</span>
+DOM.Link.url(mydoc.data.mylink, ctx.linkResolver)
+</code></pre>
 				<p>Convert a Date as string from the API to an ISO Date:</p>
 				<pre><code class="lang-javascript">DOM.Date(mydoc.data.mydate)
 </code></pre>
@@ -186,9 +190,6 @@ res.locals.DOM = PrismicDOM;
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#default" class="tsd-kind-icon">default</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#geturl" class="tsd-kind-icon">getURL</a>
 					</li>
 					<li class=" tsd-kind-function tsd-is-not-exported">
 						<a href="globals.html#htmlescape" class="tsd-kind-icon">html<wbr>Escape</a>
