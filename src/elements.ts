@@ -100,10 +100,15 @@ export class List implements IElement {
   }
 
   serialize(htmlSerializer: (element: HTMLElement, content: string) => string): string {
-    return this.value.map(item => {
+    const items = this.value.map(item => {
       if(htmlSerializer) return htmlSerializer(item.value, item.content);
-      else return item .serialize(htmlSerializer);
+      else return item.serialize(htmlSerializer);
     }).join('');
+    if(this.organized) {
+      return `<ol>${items}</ol>`;
+    } else {
+      return `<ul>${items}</ul>`;
+    }
   }
 }
 

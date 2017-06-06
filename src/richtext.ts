@@ -24,9 +24,10 @@ export default {
       const content = insertSpans(current.text, current.spans, linkResolver, htmlSerializer);
       const block = Element.apply(current, content, linkResolver);
       const tail = acc.length > 0 ? acc[acc.length -1] : null;
+
       if(tail instanceof List && block instanceof ListItem && tail.organized === block.organized) {
-        const oList = new List(tail.value.concat(block), true);
-        return acc.slice(0, acc.length - 2).concat([oList])
+        const list = new List(tail.value.concat(block), block.organized);
+        return acc.slice(0, acc.length - 1).concat([list])
       
       } else if(block instanceof ListItem) {
           return acc.concat([new List([block], block.organized)]);
