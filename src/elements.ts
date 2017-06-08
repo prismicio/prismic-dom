@@ -191,9 +191,10 @@ export class Image implements IElement {
   content: string;
 
   constructor(value: any, content: string) {
+    console.log(value)
     this.kind = ElementKind.image;
     this.value = value;
-    this.url = this.value.image.url;
+    this.url = this.value.url;
     this.content = content;
   }
 
@@ -279,7 +280,6 @@ export const Element = {
       case 'heading3': return new Heading(element, 3, content);
       case 'heading4': return new Heading(element, 4, content);
       case 'heading5': return new Heading(element, 5, content);
-      case 'heading6': return new Heading(element, 6, content);
       case 'heading6': return new Heading(element, 6, content);
       case 'paragraph': return new Paragraph(element, content);
       case 'preformatted': return new Preformatted(element, content);
