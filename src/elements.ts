@@ -189,13 +189,14 @@ export class Image implements IElement {
   url: string;
   value: any;
   content: string;
+  linkUrl: string | null;
 
-  constructor(value: any, content: string) {
-    console.log(value)
+  constructor(value: any, content: string, linkResolver: (doc: any, isBroken: boolean) => string) {
     this.kind = ElementKind.image;
     this.value = value;
     this.url = this.value.url;
     this.content = content;
+    this.linkUrl = value.linkTo ? LinkHelper.url(value.linkTo, linkResolver) : null;
   }
 
   serialize(htmlSerializer: (element: HTMLElement, content: string) => string): string {
@@ -204,7 +205,7 @@ export class Image implements IElement {
     const img = `<img src="${this.value.url}" alt="${this.value.alt || ''}" copyright="${this.value.copyright || ''}">`;
     return (`
       <p class=${wrapperClassList.join(' ')}>
-        ${this.url ? `<a href="${this.url}">${img}</a>` : img}
+        ${this.linkUrl ? `<a href="${this.linkUrl}">${img}</a>` : img}
       </p>
     `);
   }
@@ -242,7 +243,7 @@ export class Link implements IElement {
   content: string;
   url: string;
 
-  constructor(value: any, linkResolver: (doc: any, isBroken: boolean) => string, content: string) {
+  constructor(value: any, content: string, linkResolver: (doc: any, isBroken: boolean) => string) {
     this.kind = ElementKind.hyperlink;
     this.value = value;
     this.content = content;
@@ -287,9 +288,9 @@ export const Element = {
       case 'em': return new Emphasized(element, content);
       case 'list-item': return new ListItem(element, false, content);
       case 'o-list-item': return new ListItem(element, true, content);
-      case 'image': return new Image(element, content);
+      case 'image': return new Image(element, content, linkResolver);
       case 'embed': return new Embed(element, content);
-      case 'hyperlink': return new Link(element, linkResolver, content);
+      case 'hyperlink': return new Link(element, content, linkResolver);
       case 'label': return new Label(element, content);
       default: throw new Error(`Invalid element type on element : ${JSON.stringify(element)}`);
     }
