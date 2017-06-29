@@ -81,7 +81,8 @@ export declare class Image implements IElement {
     url: string;
     value: any;
     content: string;
-    constructor(value: any, content: string);
+    linkUrl: string | null;
+    constructor(value: any, content: string, linkResolver: (doc: any, isBroken: boolean) => string);
     serialize(htmlSerializer: (element: HTMLElement, content: string) => string): string;
 }
 export declare class Embed implements IElement {
@@ -96,7 +97,7 @@ export declare class Link implements IElement {
     value: any;
     content: string;
     url: string;
-    constructor(value: any, linkResolver: (doc: any, isBroken: boolean) => string, content: string);
+    constructor(value: any, content: string, linkResolver: (doc: any, isBroken: boolean) => string);
     serialize(htmlSerializer: (element: HTMLElement, content: string) => string): string;
 }
 export declare class Label implements IElement {
