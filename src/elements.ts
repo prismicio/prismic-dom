@@ -63,9 +63,10 @@ export class Heading implements IElement {
   }
 
   serialize(htmlSerializer: (element: HTMLElement, content: string) => string): string {
-    if(htmlSerializer) return htmlSerializer(this.value, this.content);
     const classList = [this.value.label || ''];
-    return `<h${this.level} class="${classList.join(' ')}">${this.content}</h${this.level}>`;
+    return htmlSerializer
+      && htmlSerializer(this.value, this.content)
+      || `<h${this.level} class="${classList.join(' ')}">${this.content}</h${this.level}>`;
   }
 }
 
@@ -82,9 +83,10 @@ export class ListItem implements IElement {
   }
 
   serialize(htmlSerializer: (element: HTMLElement, content: string) => string): string {
-    if(htmlSerializer) return htmlSerializer(this.value, this.content);
     const classList = [this.value.label || ''];
-    return `<li class="${classList.join(' ')}">${this.content}</li>`;
+    return htmlSerializer
+      && htmlSerializer(this.value, this.content)
+      || `<li class="${classList.join(' ')}">${this.content}</li>`;
   }
 }
 
@@ -101,8 +103,9 @@ export class List implements IElement {
 
   serialize(htmlSerializer: (element: HTMLElement, content: string) => string): string {
     const items = this.value.map(item => {
-      if(htmlSerializer) return htmlSerializer(item.value, item.content);
-      else return item.serialize(htmlSerializer);
+      return htmlSerializer
+        && htmlSerializer(item.value, item.content)
+        || item.serialize(htmlSerializer);
     }).join('');
     if(this.organized) {
       return `<ol>${items}</ol>`;
@@ -124,9 +127,10 @@ export class Paragraph implements IElement {
   }
 
   serialize(htmlSerializer: (element: HTMLElement, content: string) => string): string {
-    if(htmlSerializer) return htmlSerializer(this.value, this.content);
     const classList = [this.value.label || ''];
-    return `<p class="${classList.join(' ')}">${this.content}</p>`;
+    return htmlSerializer
+      && htmlSerializer(this.value, this.content)
+      || `<p class="${classList.join(' ')}">${this.content}</p>`;
   }
 }
 
@@ -142,9 +146,10 @@ export class Preformatted implements IElement {
   }
 
   serialize(htmlSerializer: (element: HTMLElement, content: string) => string): string {
-    if(htmlSerializer) return htmlSerializer(this.value, this.content);
     const classList = [this.value.label || ''];
-    return `<pre class="${classList.join(' ')}">${this.content}</pre>`;
+    return htmlSerializer
+      && htmlSerializer(this.value, this.content)
+      || `<pre class="${classList.join(' ')}">${this.content}</pre>`;
   }
 }
 
@@ -160,9 +165,10 @@ export class Strong implements IElement {
   }
 
   serialize(htmlSerializer: (element: HTMLElement, content: string) => string): string {
-    if(htmlSerializer) return htmlSerializer(this.value, this.content);
     const classList = [this.value.label || ''];
-    return `<strong class="${classList.join(' ')}">${this.content}</strong>`;
+    return htmlSerializer
+      && htmlSerializer(this.value, this.content)
+      || `<strong class="${classList.join(' ')}">${this.content}</strong>`;
   }
 }
 
@@ -178,9 +184,10 @@ export class Emphasized implements IElement {
   }
 
   serialize(htmlSerializer: (element: HTMLElement, content: string) => string): string {
-    if(htmlSerializer) return htmlSerializer(this.value, this.content);
     const classList = [this.value.label || ''];
-    return `<em class="${classList.join(' ')}">${this.content}</em>`;
+    return htmlSerializer
+      && htmlSerializer(this.value, this.content)
+      || `<em class="${classList.join(' ')}">${this.content}</em>`;
   }
 }
 
@@ -200,14 +207,15 @@ export class Image implements IElement {
   }
 
   serialize(htmlSerializer: (element: HTMLElement, content: string) => string): string {
-    if(htmlSerializer) return htmlSerializer(this.value, this.content);
     const wrapperClassList = [this.value.label || '', 'block-img'];
     const img = `<img src="${this.value.url}" alt="${this.value.alt || ''}" copyright="${this.value.copyright || ''}">`;
-    return (`
-      <p class=${wrapperClassList.join(' ')}>
-        ${this.linkUrl ? `<a href="${this.linkUrl}">${img}</a>` : img}
-      </p>
-    `);
+    return htmlSerializer
+      && htmlSerializer(this.value, this.content)
+      || (`
+        <p class=${wrapperClassList.join(' ')}>
+          ${this.linkUrl ? `<a href="${this.linkUrl}">${img}</a>` : img}
+        </p>
+      `);
   }
 }
 
@@ -223,17 +231,18 @@ export class Embed implements IElement {
   }
 
   serialize(htmlSerializer: (element: HTMLElement, content: string) => string): string {
-    if(htmlSerializer) return htmlSerializer(this.value, this.content);
     const classList = [this.value.label || ''];
-    return (
-      `<div data-oembed="${this.value.embed_url}"
-        data-oembed-type="${this.value.type}"
-        data-oembed-provider="${this.value.provider_name}
-        class="${classList.join(' ')}">
-        
-        ${this.value.oembed.html}
-      </div>
-    `);
+    return htmlSerializer
+      && htmlSerializer(this.value, this.content)
+      || (
+        `<div data-oembed="${this.value.embed_url}"
+          data-oembed-type="${this.value.type}"
+          data-oembed-provider="${this.value.provider_name}
+          class="${classList.join(' ')}">
+          
+          ${this.value.oembed.html}
+        </div>
+      `);
   }
 }
 
@@ -251,8 +260,9 @@ export class Link implements IElement {
   }
 
   serialize(htmlSerializer: (element: HTMLElement, content: string) => string): string {
-    if(htmlSerializer) return htmlSerializer(this.value, this.content);
-    return `<a href="${this.url}">${this.content}</a>`;
+    return htmlSerializer
+      && htmlSerializer(this.value, this.content)
+      || `<a href="${this.url}">${this.content}</a>`;
   }
 }
 
@@ -268,8 +278,9 @@ export class Label implements IElement {
   }
 
   serialize(htmlSerializer: (element: HTMLElement, content: string) => string): string {
-    if(htmlSerializer) return htmlSerializer(this.value, this.content);
-    return `<span class="${this.value.data.label}">${this.content}</span>`;
+    return htmlSerializer
+      && htmlSerializer(this.value, this.content)
+      || `<span class="${this.value.data.label}">${this.content}</span>`;
   }
 }
 
