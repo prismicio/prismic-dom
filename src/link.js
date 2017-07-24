@@ -1,5 +1,5 @@
 export default {
-  url(link: any, linkResolver?: (doc: any, isBroken: boolean) => string): string {
+  url(link, linkResolver) {
     if(link.link_type === 'Document') {
       return linkResolver ? linkResolver(link, link.isBroken) : '';
     } else {
