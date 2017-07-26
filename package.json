@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/prismicio/prismic-dom#readme",
   "dependencies": {
+    "prismic-helpers": "^1.0.0",
     "prismic-richtext": "*"
   },
   "devDependencies": {

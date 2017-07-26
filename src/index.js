@@ -1,5 +1,4 @@
-import Date from "./date";
+import PrismicHelpers from 'prismic-helpers';
 import RichText from "./richtext";
-import Link from "./link";
 
-module.exports = { Date, RichText, Link };
+module.exports = { Date: PrismicHelpers.Date, RichText, Link: PrismicHelpers.Link };

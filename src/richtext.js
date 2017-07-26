@@ -1,5 +1,5 @@
 import PrismicRichText, {Elements} from 'prismic-richtext';
-import LinkHelper from './link';
+import { Link as LinkHelper } from 'prismic-helpers';
 
 function serialize(linkResolver, type, element, content, children) {
   switch(type) {
