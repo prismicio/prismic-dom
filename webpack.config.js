@@ -16,7 +16,7 @@ if (yargs.argv.p) {
  
 var config = {
   entry: [
-    __dirname + '/src/index.ts'
+    __dirname + '/src/index.js'
   ],
   output: {
     path: path.join(__dirname, '/dist'),
@@ -28,13 +28,10 @@ var config = {
   module: {
     rules: [
       {
-        test: /\.ts$/,
-        enforce: 'pre',
-        loader: 'ts-loader',
-        exclude: /node_modules/,
-        options: {
-          emitErrors: true,
-          failOnHint: true
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader'
         }
       },
       {
@@ -45,10 +42,9 @@ var config = {
   },
   resolve: {
     alias:{
-      "@root": path.resolve( __dirname, './src' ),
-      "@utils": path.resolve( __dirname, './src/utils' )
+      "@root": path.resolve( __dirname, './src' )
     },
-    extensions: ['.ts']
+    extensions: ['.js']
   },
   plugins: plugins
 };

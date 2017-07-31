@@ -2,14 +2,11 @@
   "name": "prismic-dom",
   "version": "1.2.8",
   "description": "render prismic json fragments in HTML",
-  "main": "dist/prismic-dom.js",
+  "main": "dist/prismic-dom.min.js",
   "scripts": {
     "build": "webpack --debug; webpack -p",
     "dev": "webpack -d --watch",
-    "prepublish": "npm run build; npm run docs",
-    "docs": "typedoc --mode file --out ./docs/ ./src/",
-    "lint": "tslint src",
-    "posttest": "tslint lib"
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -21,12 +18,16 @@
     "url": "https://github.com/prismicio/prismic-dom/issues"
   },
   "homepage": "https://github.com/prismicio/prismic-dom#readme",
+  "dependencies": {
+    "prismic-helpers": "^1.0.0",
+    "prismic-richtext": "^0.1.0"
+  },
   "devDependencies": {
-    "ts-loader": "^2.0.3",
-    "tslint": "^5.1.0",
-    "typedoc": "^0.6.0",
-    "typescript": "^2.3.2",
-    "webpack": "^2.4.1",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015": "^6.24.1",
+    "webpack": "^2.7.0",
     "yargs": "^7.1.0"
   }
 }
