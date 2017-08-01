@@ -3,24 +3,24 @@ import { Link as LinkHelper } from 'prismic-helpers';
 
 function serialize(linkResolver, type, element, content, children) {
   switch(type) {
-    case Elements.heading1: return serializeStandardTag('h1', element, content, children);
-    case Elements.heading2: return serializeStandardTag('h2', element, content, children);
-    case Elements.heading3: return serializeStandardTag('h3', element, content, children);
-    case Elements.heading4: return serializeStandardTag('h4', element, content, children);
-    case Elements.heading5: return serializeStandardTag('h5', element, content, children);
-    case Elements.heading6: return serializeStandardTag('h6', element, content, children);
-    case Elements.paragraph: return serializeStandardTag('p', element, content, children);
-    case Elements.preformatted: return serializeStandardTag('pre', element, content, children);
-    case Elements.strong: return serializeStandardTag('strong', element, content, children);
-    case Elements.em: return serializeStandardTag('em', element, content, children);
-    case Elements.listItem: return serializeStandardTag('li', element, content, children);
-    case Elements.oListItem: return serializeStandardTag('li', element, content, children);
-    case Elements.list: return serializeStandardTag('ul', element, content, children);
-    case Elements.oList: return serializeStandardTag('ol', element, content, children);
+    case Elements.heading1: return serializeStandardTag('h1', element, children);
+    case Elements.heading2: return serializeStandardTag('h2', element, children);
+    case Elements.heading3: return serializeStandardTag('h3', element, children);
+    case Elements.heading4: return serializeStandardTag('h4', element, children);
+    case Elements.heading5: return serializeStandardTag('h5', element, children);
+    case Elements.heading6: return serializeStandardTag('h6', element, children);
+    case Elements.paragraph: return serializeStandardTag('p', element, children);
+    case Elements.preformatted: return serializeStandardTag('pre', element, children);
+    case Elements.strong: return serializeStandardTag('strong', element, children);
+    case Elements.em: return serializeStandardTag('em', element, children);
+    case Elements.listItem: return serializeStandardTag('li', element, children);
+    case Elements.oListItem: return serializeStandardTag('li', element, children);
+    case Elements.list: return serializeStandardTag('ul', element, children);
+    case Elements.oList: return serializeStandardTag('ol', element, children);
     case Elements.image: return serializeImage(linkResolver, element);
     case Elements.embed: return serializeEmbed(element);
-    case Elements.hyperlink: return serializeHyperlink(linkResolver, element, content, children);
-    case Elements.label: return serializeLabel(element, content, children);
+    case Elements.hyperlink: return serializeHyperlink(linkResolver, element, children);
+    case Elements.label: return serializeLabel(element, children);
     case Elements.span: return serializeSpan(content);
     default: return '';
   }
@@ -29,8 +29,8 @@ function serialize(linkResolver, type, element, content, children) {
 function label(element) {
   return element.label ? ` class="${element.label}"` : '';
 }
-function serializeStandardTag(tag, element, content, children) {
-  return `<${tag}${label(element)}>${children ? children.join('') : content}</${tag}>`;
+function serializeStandardTag(tag, element, children) {
+  return `<${tag}${label(element)}>${children.join('')}</${tag}>`;
 }
 
 function serializeImage(linkResolver, element) {
@@ -57,12 +57,12 @@ function serializeEmbed(element) {
   `);
 }
 
-function serializeHyperlink(linkResolver, element, content, children) {
-  return `<a href="${LinkHelper.url(element.data, linkResolver)}">${children ? children.join('') : content}</a>`
+function serializeHyperlink(linkResolver, element, children) {
+  return `<a href="${LinkHelper.url(element.data, linkResolver)}">${children.join('')}</a>`
 }
 
-function serializeLabel(element, content, children) {
-  return `<span ${label(element.data)}>${children ? children.join('') : content}</span>`;
+function serializeLabel(element, children) {
+  return `<span ${label(element.data)}>${children.join('')}</span>`;
 }
 
 function serializeSpan(content) {
@@ -71,9 +71,7 @@ function serializeSpan(content) {
 
 export default {
   asText(structuredText) {
-    return structuredText.reduce((acc, block) => {
-      return `${acc} ${block.text}`;
-    }, '');
+    return PrismicRichText.asText(structuredText);
   },
 
   asHtml(richText, linkResolver, htmlSerializer) {
