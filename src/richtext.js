@@ -66,7 +66,7 @@ function serializeLabel(element, children) {
 }
 
 function serializeSpan(content) {
-  return content;
+  return content.replace(/\n/g, "<br />");
 }
 
 export default {
