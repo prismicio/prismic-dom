@@ -20,7 +20,7 @@
   "homepage": "https://github.com/prismicio/prismic-dom#readme",
   "dependencies": {
     "prismic-helpers": "^1.0.0",
-    "prismic-richtext": "^0.2.1"
+    "prismic-richtext": "^0.2.3"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
