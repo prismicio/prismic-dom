@@ -49,7 +49,7 @@ function serializeEmbed(element) {
   return (`
     <div data-oembed="${element.embed_url}"
       data-oembed-type="${element.type}"
-      data-oembed-provider="${element.provider_name}
+      data-oembed-provider="${element.provider_name}"
       ${label(element)}>
           
       ${element.oembed.html}
@@ -66,7 +66,7 @@ function serializeLabel(element, children) {
 }
 
 function serializeSpan(content) {
-  return content.replace(/\n/g, "<br />");
+  return content ? content.replace(/\n/g, "<br />") : '';
 }
 
 export default {
