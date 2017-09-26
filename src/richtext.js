@@ -58,7 +58,8 @@ function serializeEmbed(element) {
 }
 
 function serializeHyperlink(linkResolver, element, children) {
-  return `<a href="${LinkHelper.url(element.data, linkResolver)}">${children.join('')}</a>`
+  const target = element.data.target ? `target="${element.data.target}"` : '';
+  return `<a ${target} href="${LinkHelper.url(element.data, linkResolver)}">${children.join('')}</a>`
 }
 
 function serializeLabel(element, children) {
