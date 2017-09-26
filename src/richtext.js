@@ -35,12 +35,13 @@ function serializeStandardTag(tag, element, children) {
 
 function serializeImage(linkResolver, element) {
   const linkUrl = element.linkTo ? LinkHelper.url(element.linkTo, linkResolver) : null;
+  const linkTarget = element.linkTo && element.linkTo.target ? `target="${element.linkTo.target}"` : '';
   const wrapperClassList = [element.label || '', 'block-img'];
   const img = `<img src="${element.url}" alt="${element.alt || ''}" copyright="${element.copyright || ''}">`;
   
   return (`
     <p class=${wrapperClassList.join(' ')}>
-      ${linkUrl ? `<a href="${linkUrl}">${img}</a>` : img}
+      ${linkUrl ? `<a ${linkTarget} href="${linkUrl}">${img}</a>` : img}
     </p>
   `);
 }
