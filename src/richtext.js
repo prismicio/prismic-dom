@@ -35,12 +35,13 @@ function serializeStandardTag(tag, element, children) {
 
 function serializeImage(linkResolver, element) {
   const linkUrl = element.linkTo ? LinkHelper.url(element.linkTo, linkResolver) : null;
+  const linkTarget = element.linkTo && element.linkTo.target ? `target="${element.linkTo.target}" rel="noopener"` : '';
   const wrapperClassList = [element.label || '', 'block-img'];
   const img = `<img src="${element.url}" alt="${element.alt || ''}" copyright="${element.copyright || ''}">`;
   
   return (`
     <p class=${wrapperClassList.join(' ')}>
-      ${linkUrl ? `<a href="${linkUrl}">${img}</a>` : img}
+      ${linkUrl ? `<a ${linkTarget} href="${linkUrl}">${img}</a>` : img}
     </p>
   `);
 }
@@ -58,7 +59,8 @@ function serializeEmbed(element) {
 }
 
 function serializeHyperlink(linkResolver, element, children) {
-  return `<a href="${LinkHelper.url(element.data, linkResolver)}">${children.join('')}</a>`
+  const target = element.data.target ? `target="${element.data.target}" rel="noopener"` : '';
+  return `<a ${target} href="${LinkHelper.url(element.data, linkResolver)}">${children.join('')}</a>`
 }
 
 function serializeLabel(element, children) {
