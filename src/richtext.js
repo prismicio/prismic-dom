@@ -40,7 +40,7 @@ function serializeImage(linkResolver, element) {
   const img = `<img src="${element.url}" alt="${element.alt || ''}" copyright="${element.copyright || ''}">`;
   
   return (`
-    <p class=${wrapperClassList.join(' ')}>
+    <p class="${wrapperClassList.join(' ')}">
       ${linkUrl ? `<a ${linkTarget} href="${linkUrl}">${img}</a>` : img}
     </p>
   `);
@@ -48,9 +48,9 @@ function serializeImage(linkResolver, element) {
 
 function serializeEmbed(element) {
   return (`
-    <div data-oembed="${element.embed_url}"
-      data-oembed-type="${element.type}"
-      data-oembed-provider="${element.provider_name}"
+    <div data-oembed="${element.oembed.embed_url}"
+      data-oembed-type="${element.oembed.type}"
+      data-oembed-provider="${element.oembed.provider_name}"
       ${label(element)}>
           
       ${element.oembed.html}
