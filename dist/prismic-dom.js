@@ -208,7 +208,7 @@ exports.default = {
   },
 
 
-  elements: _prismicRichtext.Elements
+  Elements: _prismicRichtext.Elements
 };
 
 /***/ }),
