@@ -79,5 +79,7 @@ export default {
   asHtml(richText, linkResolver, htmlSerializer) {
     const serialized = PrismicRichText.serialize(richText, serialize.bind(null, linkResolver), htmlSerializer);
     return serialized.join('');
-  }
+  },
+  
+  elements : Elements
 }
