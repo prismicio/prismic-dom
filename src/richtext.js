@@ -81,5 +81,5 @@ export default {
     return serialized.join('');
   },
   
-  elements : Elements
+  Elements : Elements
 }
