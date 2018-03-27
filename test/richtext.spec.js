@@ -43,7 +43,7 @@ describe('asText', function() {
     // Until pull request https://github.com/prismicio/prismic-richtext/pull/8
     // is released, we test for the old behaviour.
     it('should join blocks with one whitespace (default)', function()  {
-      expect(result).to.equal('\n ' + 'A > B <example>\n  TEST\n</example> This is bold and italic and >:) both.');
+      expect(result).to.equal('A > B <example>\n  TEST\n</example> This is bold and italic and >:) both.');
     });
   });
 
