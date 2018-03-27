@@ -1,5 +1,6 @@
 import PrismicRichText, {Elements} from 'prismic-richtext';
 import { Link as LinkHelper } from 'prismic-helpers';
+import escapeHtml from 'escape-html';
 
 function serialize(linkResolver, type, element, content, children) {
   switch(type) {
@@ -10,7 +11,7 @@ function serialize(linkResolver, type, element, content, children) {
     case Elements.heading5: return serializeStandardTag('h5', element, children);
     case Elements.heading6: return serializeStandardTag('h6', element, children);
     case Elements.paragraph: return serializeStandardTag('p', element, children);
-    case Elements.preformatted: return serializeStandardTag('pre', element, children);
+    case Elements.preformatted: return serializePreFormatted(element);
     case Elements.strong: return serializeStandardTag('strong', element, children);
     case Elements.em: return serializeStandardTag('em', element, children);
     case Elements.listItem: return serializeStandardTag('li', element, children);
@@ -29,8 +30,13 @@ function serialize(linkResolver, type, element, content, children) {
 function label(element) {
   return element.label ? ` class="${element.label}"` : '';
 }
+
 function serializeStandardTag(tag, element, children) {
   return `<${tag}${label(element)}>${children.join('')}</${tag}>`;
+}
+
+function serializePreFormatted(element) {
+  return `<pre${label(element)}>${escapeHtml(element.text)}</pre>`;
 }
 
 function serializeImage(linkResolver, element) {
@@ -68,12 +74,12 @@ function serializeLabel(element, children) {
 }
 
 function serializeSpan(content) {
-  return content ? content.replace(/\n/g, "<br />") : '';
+  return content ? escapeHtml(content).replace(/\n/g, '<br />') : '';
 }
 
 export default {
-  asText(structuredText) {
-    return PrismicRichText.asText(structuredText);
+  asText(structuredText, joinString) {
+    return PrismicRichText.asText(structuredText, joinString);
   },
 
   asHtml(richText, linkResolver, htmlSerializer) {
