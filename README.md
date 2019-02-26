@@ -1,21 +1,23 @@
-## JavaScript library with static helpers to render HTML with Prismic API V2 BETA
+## JavaScript library with static helpers to render HTML and Markdown with Prismic API V2 BETA
 
 [![npm version](https://badge.fury.io/js/prismic-dom.svg)](http://badge.fury.io/js/prismic-dom)
 [![Build Status](https://api.travis-ci.org/prismicio/prismic-dom.png)](https://travis-ci.org/prismicio/prismic-dom)
 
-* The [source code](https://github.com/prismicio/prismic-dom) is on Github.
-* The [Changelog](https://github.com/prismicio/prismic-dom/releases) is on Github's releases tab.
+- The [source code](https://github.com/prismicio/prismic-dom) is on Github.
+- The [Changelog](https://github.com/prismicio/prismic-dom/releases) is on Github's releases tab.
 
 It's meant to work in pair with the prismic-javascript library, a new javascript kit for the prismic API v2 available here:
-* [prismic-javascript](https://github.com/prismicio/prismic-javascript) is on Github.
+
+- [prismic-javascript](https://github.com/prismicio/prismic-javascript) is on Github.
 
 ### Installation
 
 #### Prismic Api Endpoint
+
 Your endpoint must contains "v2" at the end, otherwise it means that you're working on the API V1 so this library won't work for you.
 
 ```javascript
-apiEndpoint: your-repo-name.prismic.io/api/v2
+apiEndpoint: your - repo - name.prismic.io / api / v2;
 ```
 
 #### NPM
@@ -38,47 +40,57 @@ On our release page: [https://github.com/prismicio/prismic-dom/releases](https:/
 
 The kit is universal, it can be used:
 
-* Server-side with NodeJS
-* Client-side as part of your build with Browserify, Webpack
-* Client-side with a simple script tag
+- Server-side with NodeJS
+- Client-side as part of your build with Browserify, Webpack
+- Client-side with a simple script tag
 
 ### Demo project
 
 You can find an integration of prismic content with the new API V2 in the following project:
-* [Node.js project](https://github.com/arnaudlewis/prismic-apiv2)
+
+- [Node.js project](https://github.com/arnaudlewis/prismic-apiv2)
 
 ### Usage
 
 With NodeJS, you can expose PrismicDOM directly in your locals to have it in your templates:
-``` javascript
-import PrismicDOM from 'prismic-dom';
+
+```javascript
+import PrismicDOM from "prismic-dom";
 
 res.locals.DOM = PrismicDOM;
 ```
 
 Render a RichText:
 
- * As Html
+- As Html
+
 ```javascript
-  DOM.RichText.asHtml(mydoc.data.myrichtext, linkResolver)
+DOM.RichText.asHtml(mydoc.data.myrichtext, linkResolver);
 ```
 
- * As Text
+- As Text
+
 ```javascript
-  DOM.RichText.asText(mydoc.data.myrichtext)
+DOM.RichText.asText(mydoc.data.myrichtext);
+```
+
+- As Markdown
+
+```javascript
+DOM.RichText.asMarkdown(mydoc.data.myrichtext, linkResolver);
 ```
 
 Get a URL from a Link fragment of any kind
 
 ```javascript
 //link resolver not required if sure that it's not a document link
-DOM.Link.url(mydoc.data.mylink, ctx.linkResolver)
+DOM.Link.url(mydoc.data.mylink, ctx.linkResolver);
 ```
 
 Convert a Date as string from the API to an ISO Date:
 
 ```javascript
-DOM.Date(mydoc.data.mydate)
+DOM.Date(mydoc.data.mydate);
 ```
 
 #### Install the kit locally

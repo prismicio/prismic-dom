@@ -1,6 +1,6 @@
 {
   "name": "prismic-dom",
-  "description": "render prismic json fragments in HTML",
+  "description": "render prismic json fragments in HTML and Markdown",
   "main": "dist/prismic-dom.min.js",
   "license": "ISC",
   "homepage": "https://github.com/prismicio/prismic-dom",

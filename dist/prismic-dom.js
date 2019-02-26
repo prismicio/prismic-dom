@@ -127,33 +127,33 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function serialize(linkResolver, type, element, content, children) {
   switch (type) {
     case _prismicRichtext.Elements.heading1:
-      return serializeStandardTag('h1', element, children);
+      return serializeStandardTag("h1", element, children);
     case _prismicRichtext.Elements.heading2:
-      return serializeStandardTag('h2', element, children);
+      return serializeStandardTag("h2", element, children);
     case _prismicRichtext.Elements.heading3:
-      return serializeStandardTag('h3', element, children);
+      return serializeStandardTag("h3", element, children);
     case _prismicRichtext.Elements.heading4:
-      return serializeStandardTag('h4', element, children);
+      return serializeStandardTag("h4", element, children);
     case _prismicRichtext.Elements.heading5:
-      return serializeStandardTag('h5', element, children);
+      return serializeStandardTag("h5", element, children);
     case _prismicRichtext.Elements.heading6:
-      return serializeStandardTag('h6', element, children);
+      return serializeStandardTag("h6", element, children);
     case _prismicRichtext.Elements.paragraph:
-      return serializeStandardTag('p', element, children);
+      return serializeStandardTag("p", element, children);
     case _prismicRichtext.Elements.preformatted:
       return serializePreFormatted(element);
     case _prismicRichtext.Elements.strong:
-      return serializeStandardTag('strong', element, children);
+      return serializeStandardTag("strong", element, children);
     case _prismicRichtext.Elements.em:
-      return serializeStandardTag('em', element, children);
+      return serializeStandardTag("em", element, children);
     case _prismicRichtext.Elements.listItem:
-      return serializeStandardTag('li', element, children);
+      return serializeStandardTag("li", element, children);
     case _prismicRichtext.Elements.oListItem:
-      return serializeStandardTag('li', element, children);
+      return serializeStandardTag("li", element, children);
     case _prismicRichtext.Elements.list:
-      return serializeStandardTag('ul', element, children);
+      return serializeStandardTag("ul", element, children);
     case _prismicRichtext.Elements.oList:
-      return serializeStandardTag('ol', element, children);
+      return serializeStandardTag("ol", element, children);
     case _prismicRichtext.Elements.image:
       return serializeImage(linkResolver, element);
     case _prismicRichtext.Elements.embed:
@@ -165,46 +165,136 @@ function serialize(linkResolver, type, element, content, children) {
     case _prismicRichtext.Elements.span:
       return serializeSpan(content);
     default:
-      return '';
+      return "";
   }
 }
 
 function label(element) {
-  return element.label ? ' class="' + element.label + '"' : '';
+  return element.label ? " class=\"" + element.label + "\"" : "";
 }
 
 function serializeStandardTag(tag, element, children) {
-  return '<' + tag + label(element) + '>' + children.join('') + '</' + tag + '>';
+  return "<" + tag + label(element) + ">" + children.join("") + "</" + tag + ">";
 }
 
 function serializePreFormatted(element) {
-  return '<pre' + label(element) + '>' + (0, _escapeHtml2.default)(element.text) + '</pre>';
+  return "<pre" + label(element) + ">" + (0, _escapeHtml2.default)(element.text) + "</pre>";
 }
 
 function serializeImage(linkResolver, element) {
   var linkUrl = element.linkTo ? _prismicHelpers.Link.url(element.linkTo, linkResolver) : null;
-  var linkTarget = element.linkTo && element.linkTo.target ? 'target="' + element.linkTo.target + '" rel="noopener"' : '';
-  var wrapperClassList = [element.label || '', 'block-img'];
-  var img = '<img src="' + element.url + '" alt="' + (element.alt || '') + '" copyright="' + (element.copyright || '') + '">';
+  var linkTarget = element.linkTo && element.linkTo.target ? "target=\"" + element.linkTo.target + "\" rel=\"noopener\"" : "";
+  var wrapperClassList = [element.label || "", "block-img"];
+  var img = "<img src=\"" + element.url + "\" alt=\"" + (element.alt || "") + "\" copyright=\"" + (element.copyright || "") + "\">";
 
-  return '\n    <p class="' + wrapperClassList.join(' ') + '">\n      ' + (linkUrl ? '<a ' + linkTarget + ' href="' + linkUrl + '">' + img + '</a>' : img) + '\n    </p>\n  ';
+  return "\n    <p class=\"" + wrapperClassList.join(" ") + "\">\n      " + (linkUrl ? "<a " + linkTarget + " href=\"" + linkUrl + "\">" + img + "</a>" : img) + "\n    </p>\n  ";
 }
 
 function serializeEmbed(element) {
-  return '\n    <div data-oembed="' + element.oembed.embed_url + '"\n      data-oembed-type="' + element.oembed.type + '"\n      data-oembed-provider="' + element.oembed.provider_name + '"\n      ' + label(element) + '>\n          \n      ' + element.oembed.html + '\n    </div>\n  ';
+  return "\n    <div data-oembed=\"" + element.oembed.embed_url + "\"\n      data-oembed-type=\"" + element.oembed.type + "\"\n      data-oembed-provider=\"" + element.oembed.provider_name + "\"\n      " + label(element) + ">\n\n      " + element.oembed.html + "\n    </div>\n  ";
 }
 
 function serializeHyperlink(linkResolver, element, children) {
-  var target = element.data.target ? 'target="' + element.data.target + '" rel="noopener"' : '';
-  return '<a ' + target + ' href="' + _prismicHelpers.Link.url(element.data, linkResolver) + '">' + children.join('') + '</a>';
+  var target = element.data.target ? "target=\"" + element.data.target + "\" rel=\"noopener\"" : "";
+  return "<a " + target + " href=\"" + _prismicHelpers.Link.url(element.data, linkResolver) + "\">" + children.join("") + "</a>";
 }
 
 function serializeLabel(element, children) {
-  return '<span ' + label(element.data) + '>' + children.join('') + '</span>';
+  return "<span " + label(element.data) + ">" + children.join("") + "</span>";
 }
 
 function serializeSpan(content) {
-  return content ? (0, _escapeHtml2.default)(content).replace(/\n/g, '<br />') : '';
+  return content ? (0, _escapeHtml2.default)(content).replace(/\n/g, "<br />") : "";
+}
+
+function serializeMD(linkResolver, type, element, content, children) {
+  switch (type) {
+    case _prismicRichtext.Elements.heading1:
+      return serializeMDHeading("#", element, children);
+    case _prismicRichtext.Elements.heading2:
+      return serializeMDHeading("##", element, children);
+    case _prismicRichtext.Elements.heading3:
+      return serializeMDHeading("###", element, children);
+    case _prismicRichtext.Elements.heading4:
+      return serializeMDHeading("####", element, children);
+    case _prismicRichtext.Elements.heading5:
+      return serializeMDHeading("#####", element, children);
+    case _prismicRichtext.Elements.heading6:
+      return serializeMDHeading("######", element, children);
+    case _prismicRichtext.Elements.paragraph:
+      return serializeMDParagraph(element, children);
+    case _prismicRichtext.Elements.preformatted:
+      return serializeMDPreFormatted(element);
+    case _prismicRichtext.Elements.strong:
+      return serializeMDStrong(element, children);
+    case _prismicRichtext.Elements.em:
+      return serializeMDEm(element, children);
+    case _prismicRichtext.Elements.listItem:
+      return serializeMDUl(element, children);
+    case _prismicRichtext.Elements.oListItem:
+      return serializeMDOl(element, children);
+    case _prismicRichtext.Elements.list:
+      return serializeMDParagraph(element, children);
+    case _prismicRichtext.Elements.oList:
+      return serializeMDParagraph(element, children);
+    case _prismicRichtext.Elements.image:
+      return serializeMDImage(linkResolver, element);
+    case _prismicRichtext.Elements.hyperlink:
+      return serializeMDHyperlink(linkResolver, element, children);
+    case _prismicRichtext.Elements.embed:
+      // no MD support, fall back to plain html
+      return serializeEmbed(element);
+    case _prismicRichtext.Elements.label:
+      // no MD support, fall back to plain html
+      return serializeMDSpan(element, children);
+    case _prismicRichtext.Elements.span:
+      return serializeMDSpan(content);
+    default:
+      return "";
+  }
+}
+
+function serializeMDHeading(heading, element, children) {
+  return heading + " " + children.join("") + "\n\n";
+}
+
+function serializeMDParagraph(element, children) {
+  return children.join("") + "\n\n";
+}
+
+function serializeMDPreFormatted(element) {
+  return "```" + "\n" + element.text + "\n" + "```" + "\n\n";
+}
+
+function serializeMDStrong(element, children) {
+  return "**" + children.join("") + "**";
+}
+
+function serializeMDEm(element, children) {
+  return "_" + children.join("") + "_";
+}
+
+function serializeMDUl(element, children) {
+  return "- " + children.join("") + "\n";
+}
+
+function serializeMDOl(element, children) {
+  return "0. " + children.join("") + "\n";
+}
+
+function serializeMDImage(linkResolver, element) {
+  var linkUrl = element.linkTo ? _prismicHelpers.Link.url(element.linkTo, linkResolver) : null;
+
+  var img = "![" + (element.alt || "") + "](" + element.url + " \"" + element.copyright + "\")";
+  return (linkUrl ? "[" + img + "](" + linkUrl + ")" : img) + "\n\n";
+}
+
+function serializeMDHyperlink(linkResolver, element, children) {
+  return "[" + children.join("") + "](" + _prismicHelpers.Link.url(element.data, linkResolver) + ")";
+}
+
+function serializeMDSpan(content) {
+  return content ? content.replace(/\n/g, "<br />") : "";
 }
 
 exports.default = {
@@ -213,7 +303,11 @@ exports.default = {
   },
   asHtml: function asHtml(richText, linkResolver, htmlSerializer) {
     var serialized = _prismicRichtext2.default.serialize(richText, serialize.bind(null, linkResolver), htmlSerializer);
-    return serialized.join('');
+    return serialized.join("");
+  },
+  asMarkdown: function asMarkdown(richText, linkResolver) {
+    var serialized = _prismicRichtext2.default.serialize(richText, serializeMD.bind(null, linkResolver));
+    return serialized.join("");
   },
 
 
