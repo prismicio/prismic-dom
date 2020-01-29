@@ -23,7 +23,7 @@
   "dependencies": {
     "escape-html": "1.0.3",
     "prismic-helpers": "^1.0.0",
-    "prismic-richtext": "^0.4.2"
+    "prismic-richtext": "^1.0.3"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
