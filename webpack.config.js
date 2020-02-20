@@ -1,19 +1,18 @@
 var webpack = require('webpack'),
     path = require('path'),
     yargs = require('yargs');
- 
+
 var libraryName = 'PrismicDOM',
     fileName = 'prismic-dom',
     plugins = [],
     outputFile;
- 
+
 if (yargs.argv.p) {
-  plugins.push(new webpack.optimize.UglifyJsPlugin({ minimize: true }));
   outputFile = fileName + '.min.js';
 } else {
   outputFile = fileName + '.js';
 }
- 
+
 var config = {
   entry: [
     __dirname + '/src/index.js'
@@ -46,7 +45,9 @@ var config = {
     },
     extensions: ['.js']
   },
-  plugins: plugins
+  mode: yargs.argv.p ? 'production' : 'development',
+  plugins: plugins,
+  optimization: { minimize: !!yargs.argv.p },
 };
- 
+
 module.exports = config;
