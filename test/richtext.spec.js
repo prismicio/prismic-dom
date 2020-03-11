@@ -64,7 +64,7 @@ describe('asHtml', function() {
     const expectations = [
       '<p>A &gt; B</p>',
       '<pre>&lt;example&gt;\n  TEST\n&lt;/example&gt;</pre>',
-      '<p>This is <strong>bold</strong> and <em>italic</em> and <strong><em>&gt;:) both</em></strong>.</p>',
+      '<p>This is <strong>bold</strong> and <em>italic</em> and <em><strong>&gt;:) both</strong></em>.</p>',
     ];
 
     it('should contain the first paragraph with special character escaped', function() {
