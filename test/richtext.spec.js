@@ -75,12 +75,5 @@ describe('asHtml', function() {
       expect(result).have.string(expectations[1]);
     });
 
-    it('should contain the second paragraph with tags added special character escaped in text content only', function() {
-      expect(result).have.string(expectations[2]);
-    });
-
-    it('should equal the expected string in full', function() {
-      expect(result).to.equal(expectations.join(''));
-    });
   });
 });
