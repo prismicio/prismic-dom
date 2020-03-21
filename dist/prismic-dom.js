@@ -7,7 +7,7 @@
 		exports["PrismicDOM"] = factory();
 	else
 		root["PrismicDOM"] = factory();
-})(window, function() {
+})(this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
