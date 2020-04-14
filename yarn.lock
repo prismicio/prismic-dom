@@ -3135,10 +3135,10 @@ posix-character-classes@^0.1.0:
   resolved "https://registry.yarnpkg.com/posix-character-classes/-/posix-character-classes-0.1.1.tgz#01eac0fe3b5af71a2a6c02feabb8c1fef7e00eab"
   integrity sha1-AerA/jta9xoqbAL+q7jB/vfgDqs=
 
-prismic-helpers@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/prismic-helpers/-/prismic-helpers-1.0.0.tgz#8337420cf187f55fb7b7a8be755523c8696fc329"
-  integrity sha1-gzdCDPGH9V+3t6i+dVUjyGlvwyk=
+prismic-helpers@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/prismic-helpers/-/prismic-helpers-1.0.1.tgz#c5d22860c00bf61e3dd5e5e2108f4a2fc36766a0"
+  integrity sha512-fMaOrZDeqpgJCQ9GOQKjlQxg1IBC0Y1LwEmgZ9Csg4K/+XtbPfHpJ8v43HTbiNZL3Cb7dDx7mjjSjiVMGjNgmA==
 
 prismic-richtext@^1.0.3:
   version "1.0.3"
