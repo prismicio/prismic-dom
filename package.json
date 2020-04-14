@@ -1,6 +1,6 @@
 {
   "name": "prismic-dom",
-  "version": "2.1.1",
+  "version": "2.2.1",
   "description": "render prismic json fragments in HTML",
   "main": "dist/prismic-dom.min.js",
   "scripts": {
