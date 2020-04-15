@@ -21,18 +21,17 @@
   },
   "homepage": "https://github.com/prismicio/prismic-dom#readme",
   "dependencies": {
-    "@babel/core": "^7.8.4",
     "escape-html": "1.0.3",
-    "prismic-helpers": "^1.0.0",
+    "prismic-helpers": "^1.0.2",
     "prismic-richtext": "^1.0.3"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^8.0.6",
-    "babel-preset-env": "^1.7.0",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "babel-loader": "^8.1.0",
     "chai": "^4.2.0",
     "mocha": "^7.0.1",
-    "webpack": "^4.41.6",
+    "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
     "yargs": "^15.1.0"
   }

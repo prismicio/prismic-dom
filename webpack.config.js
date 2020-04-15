@@ -14,6 +14,7 @@ if (yargs.argv.p) {
 }
 
 var config = {
+  target: 'node',
   entry: [
     __dirname + '/src/index.js'
   ],
