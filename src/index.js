@@ -3,8 +3,6 @@ const RichText = require('./richtext');
 
 const { Date, Link } = PrismicHelpers
 
-console.log('HELLO PRISMIC DOM')
-
 module.exports = {
   Date,
   Link,
