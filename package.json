@@ -22,7 +22,7 @@
   "homepage": "https://github.com/prismicio/prismic-dom#readme",
   "dependencies": {
     "escape-html": "1.0.3",
-    "prismic-helpers": "^1.0.2",
+    "prismic-helpers": "^1.0.3",
     "prismic-richtext": "^1.0.3"
   },
   "devDependencies": {
