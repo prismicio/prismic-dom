@@ -1,5 +1,5 @@
-const PrismicRichText = require('prismic-richtext');
-const { Link: LinkHelper } = require('prismic-helpers');
+const PrismicRichText = require('@prismicio/richtext');
+const { Link: LinkHelper } = require('@prismicio/helpers');
 const escapeHtml = require('escape-html')
 
 const { Elements } = PrismicRichText
