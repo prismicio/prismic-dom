@@ -1,6 +1,6 @@
 {
   "name": "prismic-dom",
-  "version": "2.2.3",
+  "version": "2.2.4",
   "description": "render prismic json fragments in HTML",
   "main": "dist/prismic-dom.min.js",
   "scripts": {
@@ -21,9 +21,9 @@
   },
   "homepage": "https://github.com/prismicio/prismic-dom#readme",
   "dependencies": {
-    "escape-html": "1.0.3",
-    "prismic-helpers": "^1.0.3",
-    "prismic-richtext": "^1.0.3"
+    "@prismicio/helpers": "^1.0.4",
+    "@prismicio/richtext": "^1.1.0",
+    "escape-html": "1.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",

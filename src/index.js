@@ -1,4 +1,4 @@
-const PrismicHelpers = require('prismic-helpers');
+const PrismicHelpers = require('@prismicio/helpers');
 const RichText = require('./richtext');
 
 const { Date, Link } = PrismicHelpers
