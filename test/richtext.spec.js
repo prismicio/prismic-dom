@@ -31,6 +31,31 @@ const mock = [
         "type": "em"
       }
     ]
+  },
+  {
+    "type": "paragraph",
+    "text": "This is a link with XSS.",
+    "spans": [{
+      "start": 10,
+      "end": 14,
+      "type": "hyperlink",
+      "data": {
+        "link_type": "Web",
+        "url": "https://example.org\" onmouseover=\"alert(document.cookie);"
+      }
+    }]
+  },{
+    "type": "paragraph",
+    "text": "This is a normal link.",
+    "spans": [{
+      "start": 17,
+      "end": 21,
+      "type": "hyperlink",
+      "data": {
+        "link_type": "Web",
+        "url": "https://prismic.io"
+      }
+    }]
   }
 ];
 
@@ -43,7 +68,7 @@ describe('asText', function() {
     // Until pull request https://github.com/prismicio/prismic-richtext/pull/8
     // is released, we test for the old behaviour.
     it('should join blocks with one whitespace (default)', function()  {
-      expect(result).to.equal('A > B <example>\n  TEST\n</example> This is bold and italic and >:) both.');
+      expect(result).to.equal('A > B <example>\n  TEST\n</example> This is bold and italic and >:) both. This is a link with XSS. This is a normal link.');
     });
   });
 
@@ -59,12 +84,15 @@ describe('asText', function() {
 });
 
 describe('asHtml', function() {
-	context('applying mock object', function() {
+  context('applying mock object', function() {
     const result = asHtml(mock);
+
     const expectations = [
       '<p>A &gt; B</p>',
       '<pre>&lt;example&gt;\n  TEST\n&lt;/example&gt;</pre>',
       '<p>This is <strong>bold</strong> and <em>italic</em> and <em><strong>&gt;:) both</strong></em>.</p>',
+      '<p>This is a <a  href="https://example.org&quot; onmouseover=&quot;alert(document.cookie);">link</a> with XSS.</p>',
+      '<p>This is a normal <a  href="https://prismic.io">link</a>.</p>'
     ];
 
     it('should contain the first paragraph with special character escaped', function() {
@@ -75,5 +103,12 @@ describe('asHtml', function() {
       expect(result).have.string(expectations[1]);
     });
 
+    it('should contain escaped external link', function() {
+      expect(result).have.string(expectations[3]);
+    });
+
+    it('should contain valid external link', function() {
+      expect(result).have.string(expectations[4]);
+    });
   });
 });
