@@ -1,8 +1,8 @@
 const PrismicRichText = require('@prismicio/richtext');
-const { Link: LinkHelper } = require('@prismicio/helpers');
-const escapeHtml = require('escape-html')
+const { Link: LinkHelper } = require('@prismicio/helpers');
+const escapeHtml = require('escape-html');
 
-const { Elements } = PrismicRichText
+const { Elements } = PrismicRichText;
 
 function serialize(linkResolver, type, element, content, children) {
   switch(type) {
@@ -46,7 +46,7 @@ function serializeImage(linkResolver, element) {
   const linkTarget = element.linkTo && element.linkTo.target ? `target="${element.linkTo.target}" rel="noopener"` : '';
   const wrapperClassList = [element.label || '', 'block-img'];
   const img = `<img src="${element.url}" alt="${element.alt || ''}" copyright="${element.copyright || ''}">`;
-  
+
   return (`
     <p class="${wrapperClassList.join(' ')}">
       ${linkUrl ? `<a ${linkTarget} href="${linkUrl}">${img}</a>` : img}
@@ -60,7 +60,7 @@ function serializeEmbed(element) {
       data-oembed-type="${element.oembed.type}"
       data-oembed-provider="${element.oembed.provider_name}"
       ${label(element)}>
-          
+
       ${element.oembed.html}
     </div>
   `);
@@ -68,7 +68,8 @@ function serializeEmbed(element) {
 
 function serializeHyperlink(linkResolver, element, children) {
   const target = element.data.target ? `target="${element.data.target}" rel="noopener"` : '';
-  return `<a ${target} href="${LinkHelper.url(element.data, linkResolver)}">${children.join('')}</a>`
+  const url = escapeHtml(LinkHelper.url(element.data, linkResolver));
+  return `<a ${target} href="${url}">${children.join('')}</a>`;
 }
 
 function serializeLabel(element, children) {
@@ -88,6 +89,6 @@ module.exports = {
     const serialized = PrismicRichText.serialize(richText, serialize.bind(null, linkResolver), htmlSerializer);
     return serialized.join('');
   },
-  
+
   Elements : Elements
-}
+};
