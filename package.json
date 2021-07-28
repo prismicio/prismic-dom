@@ -1,7 +1,7 @@
 {
   "name": "prismic-dom",
-  "version": "2.2.5",
-  "description": "render prismic json fragments in HTML",
+  "version": "2.2.6",
+  "description": "Set of helpers to manage Prismic data",
   "main": "dist/prismic-dom.min.js",
   "scripts": {
     "build": "webpack --debug; webpack -p",
@@ -14,8 +14,8 @@
     "type": "git",
     "url": "git+https://github.com/prismicio/prismic-dom.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Prismic <contact@prismic.io> (https://prismic.io)",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/prismicio/prismic-dom/issues"
   },
