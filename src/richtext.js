@@ -45,7 +45,7 @@ function serializeImage(linkResolver, element) {
   const linkUrl = element.linkTo ? LinkHelper.url(element.linkTo, linkResolver) : null;
   const linkTarget = element.linkTo && element.linkTo.target ? `target="${element.linkTo.target}" rel="noopener"` : '';
   const wrapperClassList = [element.label || '', 'block-img'];
-  const img = `<img src="${element.url}" alt="${element.alt || ''}" copyright="${element.copyright || ''}">`;
+  const img = `<img src="${element.url}" alt="${element.alt ? escapeHtml(element.alt) : ''}" copyright="${element.copyright ? escapeHtml(element.copyright) : ''}" />`;
 
   return (`
     <p class="${wrapperClassList.join(' ')}">

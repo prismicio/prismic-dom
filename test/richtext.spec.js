@@ -44,7 +44,8 @@ const mock = [
         "url": "https://example.org\" onmouseover=\"alert(document.cookie);"
       }
     }]
-  },{
+  },
+  {
     "type": "paragraph",
     "text": "This is a normal link.",
     "spans": [{
@@ -56,7 +57,17 @@ const mock = [
         "url": "https://prismic.io"
       }
     }]
-  }
+  },
+  {
+		"type": "image",
+		"url": "https://images.prismic.io/200629-sms-hoy/f0a757f6-770d-4eb8-a08b-f1727f1a58e4_guilherme-romano-KI2KaOeT670-unsplash.jpg?auto=compress,format",
+		"alt": "An \"Atlantic\" Puffin",
+		"copyright": "\"unsplash\"",
+		"dimensions": {
+			"width": 2400,
+			"height": 1602
+		}
+	}
 ];
 
 describe('asText', function() {
@@ -68,7 +79,7 @@ describe('asText', function() {
     // Until pull request https://github.com/prismicio/prismic-richtext/pull/8
     // is released, we test for the old behaviour.
     it('should join blocks with one whitespace (default)', function()  {
-      expect(result).to.equal('A > B <example>\n  TEST\n</example> This is bold and italic and >:) both. This is a link with XSS. This is a normal link.');
+      expect(result).to.equal('A > B <example>\n  TEST\n</example> This is bold and italic and >:) both. This is a link with XSS. This is a normal link. ');
     });
   });
 
@@ -92,7 +103,8 @@ describe('asHtml', function() {
       '<pre>&lt;example&gt;\n  TEST\n&lt;/example&gt;</pre>',
       '<p>This is <strong>bold</strong> and <em>italic</em> and <em><strong>&gt;:) both</strong></em>.</p>',
       '<p>This is a <a  href="https://example.org&quot; onmouseover=&quot;alert(document.cookie);">link</a> with XSS.</p>',
-      '<p>This is a normal <a  href="https://prismic.io">link</a>.</p>'
+      '<p>This is a normal <a  href="https://prismic.io">link</a>.</p>',
+      '<p class=" block-img">\n      <img src="https://images.prismic.io/200629-sms-hoy/f0a757f6-770d-4eb8-a08b-f1727f1a58e4_guilherme-romano-KI2KaOeT670-unsplash.jpg?auto=compress,format" alt="An &quot;Atlantic&quot; Puffin" copyright="&quot;unsplash&quot;" />\n    </p>'
     ];
 
     it('should contain the first paragraph with special character escaped', function() {
@@ -109,6 +121,10 @@ describe('asHtml', function() {
 
     it('should contain valid external link', function() {
       expect(result).have.string(expectations[4]);
+    });
+
+    it('should contain valid image', function() {
+      expect(result).have.string(expectations[5]);
     });
   });
 });
