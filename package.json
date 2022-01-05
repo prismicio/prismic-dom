@@ -1,10 +1,10 @@
 {
   "name": "prismic-dom",
-  "version": "2.2.6",
+  "version": "2.2.7",
   "description": "Set of helpers to manage Prismic data",
   "main": "dist/prismic-dom.min.js",
   "scripts": {
-    "build": "webpack --debug; webpack -p",
+    "build": "webpack --debug && webpack -p",
     "dev": "webpack -d --watch",
     "prepublish": "npm run build",
     "pretest": "webpack --config test/webpack.config.js",
