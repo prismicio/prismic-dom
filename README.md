@@ -1,3 +1,9 @@
+> **🚨 Replaced by [`@prismicio/helpers`](https://prismic.io/docs/technical-reference/prismicio-helpers) 📣**
+>
+> `prismic-dom` is deprecated and replaced by `@prismicio/helpers` v2. All functions from `prismic-dom` have been moved into the more general `@prismicio/helpers` package. Moving forward, only security updates will be released to `prismic-dom`.
+>
+> See the [`@prismicio/helpers` v2 Migration Guide](https://prismic.io/docs/technologies/prismic-helpers-v2-migration-guide) to learn how to upgrade your project.
+
 ## JavaScript library with static helpers to render HTML with Prismic API V2 BETA
 
 [![npm version](https://badge.fury.io/js/prismic-dom.svg)](http://badge.fury.io/js/prismic-dom)
