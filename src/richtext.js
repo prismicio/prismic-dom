@@ -48,7 +48,7 @@ function serializeImage(linkResolver, element) {
   const img = `<img src="${element.url}" alt="${element.alt ? escapeHtml(element.alt) : ''}" copyright="${element.copyright ? escapeHtml(element.copyright) : ''}" />`;
 
   return (`
-    <p class="${wrapperClassList.join(' ')}">
+    <p class="${wrapperClassList.join('')}">
       ${linkUrl ? `<a ${linkTarget} href="${linkUrl}">${img}</a>` : img}
     </p>
   `);
