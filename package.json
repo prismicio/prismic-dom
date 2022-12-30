@@ -30,7 +30,7 @@
     "@babel/preset-env": "^7.9.5",
     "babel-loader": "^8.1.0",
     "chai": "^4.2.0",
-    "mocha": "^7.0.1",
+    "mocha": "^10.2.0",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
     "yargs": "^15.1.0"
